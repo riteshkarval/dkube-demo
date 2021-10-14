@@ -60,7 +60,8 @@ if __name__ == "__main__":
     #######--- Calculating metrics ---############
     mae = metrics.mean_absolute_error(y_test, y_pred)
     mse = metrics.mean_squared_error(y_test, y_pred)
-    rmse = np.sqrt(metrics.mean_squared_error(y_test, y_pred))
+    rmse = metrics.mean_squared_error(y_test, y_pred, squared=False)
+    r2 = metrics.r2_score(y_test, y_pred)
     intersept = linReg.intercept_
     print('Mean Absolute Error:', mae)  
     print('Mean Squared Error:', mse)  
@@ -70,6 +71,8 @@ if __name__ == "__main__":
     ########--- Logging metrics into Dkube via mlflow ---############
     mlflow.log_metric("MAE", mae)
     mlflow.log_metric("MSE", mse)
+    mlflow.log_metric("RMSE", rmse)
+    mlflow.log_metric("R2", r2)
     mlflow.log_metric("intercept", intersept)
 
     # Exporting model
