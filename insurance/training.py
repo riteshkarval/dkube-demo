@@ -68,6 +68,7 @@ if __name__ == "__main__":
     print('Mean Squared Error:', mse)  
     print('Root Mean Squared Error:', rmse)
     print('R2 score:', r2)
+    print("MAPE", mape)
 
     ########--- Logging metrics into Dkube via mlflow ---############
     mlflow.log_metric("MAE", mae)
